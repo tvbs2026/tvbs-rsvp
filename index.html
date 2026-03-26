@@ -1,1 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>TVBS 2026 品牌發表會</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
 
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    --black: #000000;
+    --white: #ffffff;
+    --off-white: #f0ede8;
+    --dim: #888888;
+    --border: rgba(255,255,255,0.12);
+    --accent: #c8a96e;
+  }
+
+  html {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--black);
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 14;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+  }
+
+  .hero img.loaded {
+    opacity: 1;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent, var(--black));
+    pointer-events: none;
+  }
+
+  /* TAGLINE */
+  .tagline-section {
+    padding: 48px 28px 36px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tagline-en {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 38px;
+    letter-spacing: 2px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .tagline-zh {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .tagline-zh span {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--dim);
+  }
+
+  /* BRAND + EVENT INFO */
+  .event-header {
+    padding: 36px 28px 28px;
+    text-align: center;
+  }
+
+  .brand-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .tvbs-logo-img {
+    width: 140px;
+    height: auto;
+    display: block;
+    mix-blend-mode: screen;
+  }
+
+  .event-year {
+    font-size: 13px;
+    letter-spacing: 6px;
+    font-weight: 300;
+    color: var(--dim);
+    margin-top: 6px;
+  }
+
+  .event-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin-top: 10px;
+    color: var(--white);
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin: 24px auto;
+    opacity: 0.7;
+  }
+
+  .event-meta {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--dim);
+    letter-spacing: 1px;
+    line-height: 2;
+  }
+
+  .event-meta strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  /* FORM & SUCCESS SCREEN (保留原始樣式) */
+  .form-section { padding: 36px 28px 56px; border-top: 1px solid var(--border); }
+  .form-group { margin-bottom: 16px; }
+  .form-group input {
+    width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border);
+    padding: 16px 0; font-size: 15px; color: var(--white); outline: none;
+  }
+  .submit-btn {
+    width: 100%; margin-top: 32px; padding: 18px; background: var(--white);
+    color: var(--black); border: none; font-weight: 700; letter-spacing: 6px; cursor: pointer;
+  }
+  .success-screen {
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+    padding: 80px 28px; text-align: center; min-height: 60vh;
+  }
+  .success-screen.show { display: flex; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img src="https://lh3.googleusercontent.com/d/1KqL5yeoCticwWbHmo91DxAop8eypnrWq" alt="Event Visual" id="hero-img">
+  <div class="hero-overlay"></div>
+</section>
+
+<section class="tagline-section">
+  <div class="tagline-en">BEYOND BOUNDARIES</div>
+  <div class="tagline-zh">
+    <span>跨越</span>
+    <span>想像</span>
+    <span>視界</span>
+  </div>
+</section>
+
+<header class="event-header">
+  <div class="brand-logo">
+    <img src="https://lh3.googleusercontent.com/d/1L1OZubHLGTozvUsU16CzAZV8KDJY65Xx" alt="TVBS" class="tvbs-logo-img">
+  </div>
+  <div class="event-year">2026</div>
+  <h1 class="event-title">品牌發表會</h1>
+  <div class="divider"></div>
+  <div class="event-meta">
+    <p>2026.05.20 <strong>14:00 - 16:30</strong></p>
+    <p>台北市內湖區瑞光路 451 號 <strong>TVBS 大樓</strong></p>
+  </div>
+</header>
+
+<section class="form-section" id="form-container">
+  <form id="rsvp-form">
+    <div class="form-group">
+      <input type="text" id="name" placeholder="姓名" required>
+    </div>
+    <div class="form-group">
+      <input type="text" id="company" placeholder="公司/組織名稱" required>
+    </div>
+    <div class="form-group">
+      <input type="email" id="email" placeholder="電子郵件" required>
+    </div>
+    <button type="submit" class="submit-btn" id="submit-btn">確認報名</button>
+  </form>
+</section>
+
+<div class="success-screen" id="success-screen">
+  <h2 class="success-title">報名成功</h2>
+  <p class="success-msg">感謝您的參與，活動詳情已發送至您的信箱。</p>
+</div>
+
+<script>
+  // 圖片加載處理
+  const heroImg = document.getElementById('hero-img');
+  if (heroImg.complete) {
+    heroImg.classList.add('loaded');
+  } else {
+    heroImg.onload = () => heroImg.classList.add('loaded');
+  }
+
+  // 表單處理 (請確保 YOUR_APPS_SCRIPT_URL 已填寫)
+  const form = document.getElementById('rsvp-form');
+  const successScreen = document.getElementById('success-screen');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerText = '處理中...';
+
+    const payload = {
+      name: document.getElementById('name').value,
+      company: document.getElementById('company').value,
+      email: document.getElementById('email').value
+    };
+
+    try {
+      // 這裡請填入您在 Google Apps Script 部署得到的 Web App URL
+      // await fetch('YOUR_APPS_SCRIPT_URL', { method: 'POST', body: JSON.stringify(payload) });
+      
+      document.getElementById('form-container').style.display = 'none';
+      successScreen.classList.add('show');
+    } catch (err) {
+      alert('提交失敗，請稍後再試');
+      btn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
