@@ -102,14 +102,14 @@
     margin-bottom: 4px;
   }
 
-  /* 6. 內文區塊 */
+  /* 6. 內文區塊 (已修正為與副標題相同大小與顏色) */
   .copy-section {
     margin-bottom: 50px;
-    font-size: 15px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.85);
+    font-size: 16px;         /* 改為 16px */
+    font-weight: 500;        /* 與副標題相同字重 */
+    color: var(--white);     /* 改為純白色 */
     line-height: 2.2;
-    letter-spacing: 1px;
+    letter-spacing: 1px;     /* 保留適合長文閱讀的字距 */
   }
 
   /* 7. 重點資訊 Highlight */
@@ -158,7 +158,7 @@
     padding: 12px 0;
     font-size: 16px;
     color: var(--white);
-    text-align: center; /* 輸入框文字也置中 */
+    text-align: center;
     outline: none;
     transition: border-color 0.3s ease;
     border-radius: 0;
@@ -277,7 +277,7 @@
 
   <div class="success-screen" id="success-screen">
     <h2>報名成功！</h2>
-    <p>感謝您的參與，期待您活動當天的蒞臨。</p>
+    <p>感謝您的參與，活動詳情已發送至您的信箱。</p>
   </div>
 
   <script>
@@ -294,4 +294,31 @@
 
       const payload = {
         name: document.getElementById('name').value.trim(),
-        company: document.
+        company: document.getElementById('company').value.trim(),
+        email: document.getElementById('email').value.trim()
+      };
+
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyL-il1IoxAw94_9kZ0F_SrQu59mGouGAgw3od-Cana-SBeTzfQxV2ZajtHUVtNmA7K/exec';
+
+      fetch(scriptURL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        // 隱藏主內容與表單，顯示成功畫面
+        mainContent.style.display = 'none';
+        formContainer.style.display = 'none';
+        successScreen.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      })
+      .catch(error => {
+        alert('網路錯誤或伺服器無回應，請稍後再試。');
+        btn.disabled = false;
+        btn.innerText = '確認報名';
+      });
+    });
+  </script>
+
+</body>
+</html>
