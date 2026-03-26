@@ -37,12 +37,12 @@
     padding: 40px 24px 60px;
   }
 
-/* 1. 主視覺 (放大為 90%) */
+  /* 1. 主視覺 (放大至 90%) */
   .hero-section {
-    width: 90%;  /* 修改這裡！ */
+    width: 90%;
     margin: 0 auto 40px;
   }
-  .hero-section img {
+  .hero-section video {
     width: 100%;
     height: auto;
     display: block;
@@ -102,14 +102,32 @@
     margin-bottom: 4px;
   }
 
-  /* 6. 內文區塊 (已修正為與副標題相同大小與顏色) */
+  /* 6. 內文區塊 (包含新的文字放大樣式) */
   .copy-section {
     margin-bottom: 50px;
-    font-size: 16px;         /* 改為 16px */
-    font-weight: 500;        /* 與副標題相同字重 */
-    color: var(--white);     /* 改為純白色 */
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
     line-height: 2.2;
-    letter-spacing: 1px;     /* 保留適合長文閱讀的字距 */
+    letter-spacing: 1px;
+  }
+  
+  /* 放大 120% 的樣式 */
+  .text-120 {
+    font-size: 1.2em;
+    font-weight: 700;
+    display: block;
+    margin: 4px 0;
+  }
+
+  /* 放大 150% 的樣式 (加入金色與加粗讓情緒更跳) */
+  .text-150 {
+    font-size: 1.5em;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 4px;
+    display: block;
+    margin: 4px 0 16px; /* 加大下邊距讓排版有呼吸空間 */
   }
 
   /* 7. 重點資訊 Highlight */
@@ -137,188 +155,4 @@
   .form-section {
     background-color: var(--bg-surface);
     padding: 40px 24px;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-  }
-  .form-title {
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 4px;
-    margin-bottom: 30px;
-    color: var(--gold);
-  }
-  .form-group {
-    margin-bottom: 20px;
-  }
-  .form-group input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #555;
-    padding: 12px 0;
-    font-size: 16px;
-    color: var(--white);
-    text-align: center;
-    outline: none;
-    transition: border-color 0.3s ease;
-    border-radius: 0;
-    -webkit-appearance: none;
-  }
-  .form-group input:focus {
-    border-bottom-color: var(--gold);
-  }
-  .form-group input::placeholder {
-    color: #666;
-    letter-spacing: 2px;
-  }
-  .submit-btn {
-    width: 100%;
-    background-color: var(--gold);
-    color: var(--black);
-    border: none;
-    padding: 16px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 6px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: opacity 0.3s ease;
-  }
-  .submit-btn:hover {
-    opacity: 0.8;
-  }
-  .submit-btn:disabled {
-    background-color: #555;
-    color: #222;
-    cursor: not-allowed;
-  }
-
-  /* 成功畫面 */
-  .success-screen {
-    display: none;
-    padding: 60px 24px;
-    text-align: center;
-  }
-  .success-screen h2 {
-    font-size: 28px;
-    color: var(--gold);
-    letter-spacing: 4px;
-    margin-bottom: 16px;
-  }
-  .success-screen p {
-    color: var(--dim);
-    line-height: 1.8;
-  }
-</style>
-</head>
-<body>
-
-  <div class="container" id="main-content">
-    
-    <div class="hero-section">
-  <video src="kv.mp4" autoplay loop muted playsinline style="width: 100%; height: auto; display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></video>
-</div>
-
-    <div class="theme-section">
-      <div class="theme-title">What is Real?</div>
-      <div class="theme-subtitle">真實展現 真正精彩 真摯邀請</div>
-    </div>
-
-    <div class="brand-section">
-      <img class="tvbs-logo" src="tvbs.png" alt="TVBS Logo">
-      <div class="event-year">2026</div>
-      <div class="event-name">品牌發表會</div>
-    </div>
-
-    <div class="meta-section">
-      <p>2026.04.15 13:00</p>
-      <p>松菸誠品表演廳 | 台北市信義區菸廠路88號B1</p>
-    </div>
-
-    <div class="copy-section">
-      當我們不再能真正辨別真假，<br>
-      100% 真實體驗就成為最高價商品，<br>
-      消費者為了真人表演、比賽 - 瘋狂、排隊、搶票，<br>
-      在每個現場跟著大家一起唱歌、尖叫、大笑，<br>
-      那些讓觀眾真正流淚、真心微笑的故事，<br>
-      還有讓我們看清未來的真相跟趨勢，<br>
-      這樣的未來，TVBS 準備好了，<br>
-      4/15 邀請您一起來真實感受。
-    </div>
-
-    <div class="highlight-section">
-      <div class="highlight-block">
-        <div class="highlight-title">真正巨星上場</div>
-        <div class="highlight-content">茱蒂蒙、陳昊森、曹佑寧、林美秀</div>
-      </div>
-      <div class="highlight-block">
-        <div class="highlight-title">真的不能錯過</div>
-        <div class="highlight-content">2026 最想要演唱會門票，請攜帶名片抽獎</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="form-section" id="form-container">
-    <div class="form-title">RSVP</div>
-    <form id="rsvp-form">
-      <div class="form-group">
-        <input type="text" id="name" placeholder="姓名" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="company" placeholder="公司名稱" required>
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" placeholder="電子郵件" required>
-      </div>
-      <button type="submit" class="submit-btn" id="submit-btn">確認報名</button>
-    </form>
-  </div>
-
-  <div class="success-screen" id="success-screen">
-    <h2>報名成功！</h2>
-    <p>感謝您的參與，期待您當天的蒞臨。</p>
-  </div>
-
-  <script>
-    const form = document.getElementById('rsvp-form');
-    const formContainer = document.getElementById('form-container');
-    const successScreen = document.getElementById('success-screen');
-    const mainContent = document.getElementById('main-content');
-    const btn = document.getElementById('submit-btn');
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault(); 
-      btn.disabled = true;
-      btn.innerText = '處理中...';
-
-      const payload = {
-        name: document.getElementById('name').value.trim(),
-        company: document.getElementById('company').value.trim(),
-        email: document.getElementById('email').value.trim()
-      };
-
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbyL-il1IoxAw94_9kZ0F_SrQu59mGouGAgw3od-Cana-SBeTzfQxV2ZajtHUVtNmA7K/exec';
-
-      fetch(scriptURL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify(payload)
-      })
-      .then(response => {
-        // 隱藏主內容與表單，顯示成功畫面
-        mainContent.style.display = 'none';
-        formContainer.style.display = 'none';
-        successScreen.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      })
-      .catch(error => {
-        alert('網路錯誤或伺服器無回應，請稍後再試。');
-        btn.disabled = false;
-        btn.innerText = '確認報名';
-      });
-    });
-  </script>
-
-</body>
-</html>
+    border
