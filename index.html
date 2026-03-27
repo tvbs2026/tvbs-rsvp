@@ -6,7 +6,7 @@
 <title>TVBS 2026 品牌發表會</title>
 
 <meta property="og:title" content="TVBS 2026 品牌發表會">
-<meta property="og:description" content="在 AI 主導的新未來，將真假難辨，100% 真實體驗就成為最高價商品。4/15 邀請您一起來真實感受。">
+<meta property="og:description" content="當我們不再能真正辨別真假，100% 真實體驗就成為最高價商品。4/15 邀請您一起來真實感受。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://andrewlin-tvbs.github.io/tvbs-rsvp/">
 <meta property="og:image" content="https://andrewlin-tvbs.github.io/tvbs-rsvp/og-image.jpg">
@@ -160,8 +160,16 @@
     font-size: 22px;
     font-weight: 700;
     letter-spacing: 4px;
-    margin-bottom: 30px;
+    margin-bottom: 12px;
     color: var(--gold);
+  }
+  .form-disclaimer {
+    font-size: 13px;
+    color: var(--dim);
+    line-height: 1.6;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    font-weight: 300;
   }
   .form-group {
     margin-bottom: 20px;
@@ -227,9 +235,11 @@
   }
   .success-screen > p {
     color: var(--white);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.8;
     margin-bottom: 30px;
+    letter-spacing: 1px;
+    font-weight: 300;
   }
   .success-img {
     width: 70%;
@@ -298,7 +308,7 @@
     <div class="highlight-section">
       <div class="highlight-block">
         <div class="highlight-title">真正巨星上場</div>
-        <div class="highlight-content">茱蒂蒙·瓊查容蘇因、陳昊森、曹佑寧、林美秀</div>
+        <div class="highlight-content">茱蒂蒙、陳昊森、曹佑寧、林美秀</div>
       </div>
       <div class="highlight-block">
         <div class="highlight-title">真的不能錯過</div>
@@ -310,6 +320,10 @@
 
   <div class="form-section" id="form-container">
     <div class="form-title">RSVP</div>
+    <div class="form-disclaimer">
+      本報名網頁僅供受邀對象使用。<br>
+      填寫報名表不代表確認出席，主辦單位保留最終審核權，並將於活動前另行通知。
+    </div>
     <form id="rsvp-form">
       <div class="form-group">
         <input type="text" id="company" placeholder="公司名稱" required>
@@ -331,8 +345,8 @@
   </div>
 
   <div class="success-screen" id="success-screen">
-    <h2>報名成功！</h2>
-    <p>感謝您的參與，期待您當天的蒞臨！</p>
+    <h2>完成報名！</h2>
+    <p>本次活動採邀請制，填寫報名表不代表確認出席資格。<br>主辦單位將於活動前2天另行以電子郵件通知完成報名的貴賓，請留意信箱來信。</p>
     
     <img src="kv.jpg" alt="TVBS 2026 主視覺" class="success-img">
     
