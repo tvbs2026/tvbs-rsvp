@@ -37,26 +37,17 @@
     text-align: center;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    /* 核心修改：防止主視覺放大導致水平捲軸 */
-    overflow-x: hidden; 
   }
 
   .container {
     padding: 40px 24px 60px;
   }
 
-  /* 1. 主視覺 - 已放大 1.5 倍並設為滿版淡出 */
+  /* 1. 主視覺 - 加入最大寬度限制，解決桌機過大問題 */
   .hero-section {
-    /* 核心修改：將寬度放大為螢幕的 100% (100vw) */
-    width: 100vw;
-    /* 核心修改：利用負邊距讓滿版影片在置中的 body 中完美對齊螢幕邊緣 */
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    margin-bottom: 50px;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    transform: translateX(-50%);
+    width: 85%; /* 在手機上維持滿版感 */
+    max-width: 360px; /* 核心修改：在桌機上鎖定最大尺寸，防止無限膨脹 */
+    margin: 0 auto 40px; /* 置中並與下方保持距離 */
   }
   
   /* 套用 CSS Mask 遮罩，保持底部漸層淡出效果 */
@@ -68,8 +59,8 @@
     -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     
-    /* 放大後陰影微調，讓邊緣更柔和 */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+    /* 微調陰影，讓質感更好 */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.5); 
   }
 
   /* 2 & 3. What is Real 主題區塊 */
@@ -114,7 +105,7 @@
     letter-spacing: 8px;
   }
 
-  /* 區塊專用金色分隔線 (已縮短長度為 50px) */
+  /* 區塊專用金色分隔線 */
   .divider {
     width: 50px;
     height: 0.5pt;
