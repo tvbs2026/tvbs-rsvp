@@ -37,31 +37,39 @@
     text-align: center;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    /* 核心修改：防止主視覺放大導致水平捲軸 */
+    overflow-x: hidden; 
   }
 
   .container {
     padding: 40px 24px 60px;
   }
 
-  /* 1. 主視覺 - 已加入漸層淡出效果以減少分割感 */
+  /* 1. 主視覺 - 已放大 1.5 倍並設為滿版淡出 */
   .hero-section {
-    width: 90%;
-    margin: 0 auto 40px;
+    /* 核心修改：將寬度放大為螢幕的 100% (100vw) */
+    width: 100vw;
+    /* 核心修改：利用負邊距讓滿版影片在置中的 body 中完美對齊螢幕邊緣 */
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    margin-bottom: 50px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
   }
   
-  /* 核心修改區塊：在 video 標籤上套用 CSS Mask 遮罩 */
+  /* 套用 CSS Mask 遮罩，保持底部漸層淡出效果 */
   .hero-section video, .hero-section img {
     width: 100%;
     height: auto;
     display: block;
     
-    /* 1. 設定遮罩漸層 (Requires -webkit- prefix for mobile compatibility like iOS Safari) */
-    /* 效果：從上方開始完全顯示(black 80%)，到最底部完全透明(transparent 100%) */
-    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     
-    /* 2. 微調原本的陰影，讓淡出效果更純粹，避免硬邊界 */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4); 
+    /* 放大後陰影微調，讓邊緣更柔和 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
   }
 
   /* 2 & 3. What is Real 主題區塊 */
@@ -76,10 +84,10 @@
     margin-bottom: 6px;
   }
   .theme-subtitle {
-    font-size: 19px;
+    font-size: 19px; 
     font-weight: 900;
     color: var(--white);
-    letter-spacing: 1.5px;
+    letter-spacing: 1.5px; 
     line-height: 1.4;
   }
 
@@ -181,8 +189,8 @@
     color: var(--gold);
   }
   .form-disclaimer {
-    font-size: 15px;
-    color: var(--white);
+    font-size: 15px; 
+    color: var(--white); 
     line-height: 1.6;
     letter-spacing: 1px;
     margin-bottom: 24px;
@@ -325,7 +333,7 @@
     <div class="highlight-section">
       <div class="divider"></div> <div class="highlight-block">
         <div class="highlight-title">真正巨星上場</div>
-        <div class="highlight-content">茱蒂蒙·瓊查容蘇蘇因、陳昊森、曹佑寧、林美秀</div>
+        <div class="highlight-content">茱蒂蒙·瓊查容蘇因、陳昊森、曹佑寧、林美秀</div>
       </div>
       <div class="highlight-block">
         <div class="highlight-title">真的不能錯過</div>
