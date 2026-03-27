@@ -25,13 +25,19 @@
     --dim: #aaaaaa;
     --gold: #C8A96E;
     --bg-surface: #0a0a0a;
+    
+    /* 核心修改：定義新的寬度邏輯 */
+    --video-max-width: 720px;   /* 原本 360px 的兩倍大 */
+    --content-max-width: 480px; /* 原本文字的最高寬度 */
   }
 
   body {
     font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
     background: var(--black);
     color: var(--white);
-    max-width: 480px;
+    
+    /* 解放 body，讓它能配合新的影片寬度 */
+    max-width: var(--video-max-width); 
     margin: 0 auto;
     min-height: 100vh;
     text-align: center;
@@ -39,15 +45,23 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  .container {
-    padding: 40px 24px 60px;
+  /* 用來包覆「除影片外」所有內容的容器，鎖定在 480px */
+  .content-block {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    width: 100%;
   }
 
-  /* 1. 主視覺 - 加入最大寬度限制，解決桌機過大問題 */
+  .container {
+    padding: 40px 24px 60px;
+    width: 100%;
+  }
+
+  /* 1. 主視覺 - 已真正放大兩倍 (最高達 720px) */
   .hero-section {
-    width: 85%; /* 在手機上維持滿版感 */
-    max-width: 360px; /* 核心修改：在桌機上鎖定最大尺寸，防止無限膨脹 */
-    margin: 0 auto 40px; /* 置中並與下方保持距離 */
+    width: 100%; /* 手機上滿版 */
+    max-width: var(--video-max-width); /* 核心修改：解放最高寬度限制至原本的兩倍 */
+    margin: 0 auto 50px; /* 置中 */
   }
   
   /* 套用 CSS Mask 遮罩，保持底部漸層淡出效果 */
@@ -59,8 +73,8 @@
     -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
     
-    /* 微調陰影，讓質感更好 */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.5); 
+    /* 放大後陰影微調，質感更好 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
   }
 
   /* 2 & 3. What is Real 主題區塊 */
@@ -171,6 +185,7 @@
     padding: 40px 24px;
     border-top: 1px solid #333;
     border-bottom: 1px solid #333;
+    width: 100%;
   }
   .form-title {
     font-size: 22px;
@@ -242,6 +257,7 @@
     min-height: 100vh;
     padding: 40px 24px;
     text-align: center;
+    width: 100%;
   }
   .success-screen h2 {
     font-size: 28px;
@@ -285,92 +301,97 @@
 <body>
 
   <div class="container" id="main-content">
+    
     <div class="hero-section">
       <video src="kv.mp4" autoplay loop muted playsinline></video>
     </div>
 
-    <div class="theme-section">
-      <div class="theme-title">What is Real?</div>
-      <div class="theme-subtitle">真實展現 真正精彩 真摯邀請</div>
-    </div>
-
-    <div class="brand-section">
-      <img class="tvbs-logo" src="tvbs.png" alt="TVBS Logo">
-      <div class="event-year">2026</div>
-      <div class="event-name">品牌發表會</div>
-    </div>
-
-    <div class="meta-section">
-      <div class="divider"></div> <p style="color: var(--white); font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px;">2026.04.15</p>
-      <p>13:00 報到入場</p>
-      <p>13:30 活動開始</p>
-      <p style="margin-bottom: 16px;">15:00 活動結束</p>
-      <p>松菸誠品表演廳 | 台北市信義區菸廠路88號B1</p>
-    </div>
-
-    <div class="copy-section">
-      <div class="divider"></div> 在AI主導的新未來，將真假難辨<br>
-      100% 真實體驗就成為最高價商品<br>
-      消費者為了真人表演、比賽<br>
-      <span class="text-150">瘋狂、排隊、搶票</span>
-      在每個現場跟著大家一起<br>
-      <span class="text-150">唱歌、尖叫、大笑</span>
-      那些讓觀眾真正流淚、真心微笑的故事<br>
-      還有讓我們看清未來的真相跟趨勢<br>
-      這樣的未來，TVBS 準備好了<br>
-      4/15 邀請您一起來真實感受。
-    </div>
-
-    <div class="highlight-section">
-      <div class="divider"></div> <div class="highlight-block">
-        <div class="highlight-title">真正巨星上場</div>
-        <div class="highlight-content">茱蒂蒙·瓊查容蘇因、陳昊森、曹佑寧、林美秀</div>
+    <div class="content-block">
+      <div class="theme-section">
+        <div class="theme-title">What is Real?</div>
+        <div class="theme-subtitle">真實展現 真正精彩 真摯邀請</div>
       </div>
-      <div class="highlight-block">
-        <div class="highlight-title">真的不能錯過</div>
-        <div class="highlight-content">2026 最想要演唱會門票，請攜帶名片抽獎</div>
-      </div>
-    </div>
 
-  </div>
+      <div class="brand-section">
+        <img class="tvbs-logo" src="tvbs.png" alt="TVBS Logo">
+        <div class="event-year">2026</div>
+        <div class="event-name">品牌發表會</div>
+      </div>
+
+      <div class="meta-section">
+        <div class="divider"></div> <p style="color: var(--white); font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px;">2026.04.15</p>
+        <p>13:00 報到入場</p>
+        <p>13:30 活動開始</p>
+        <p style="margin-bottom: 16px;">15:00 活動結束</p>
+        <p>松菸誠品表演廳 | 台北市信義區菸廠路88號B1</p>
+      </div>
+
+      <div class="copy-section">
+        <div class="divider"></div> 在AI主導的新未來，將真假難辨<br>
+        100% 真實體驗就成為最高價商品<br>
+        消費者為了真人表演、比賽<br>
+        <span class="text-150">瘋狂、排隊、搶票</span>
+        在每個現場跟著大家一起<br>
+        <span class="text-150">唱歌、尖叫、大笑</span>
+        那些讓觀眾真正流淚、真心微笑的故事<br>
+        還有讓我們看清未來的真相跟趨勢<br>
+        這樣的未來，TVBS 準備好了<br>
+        4/15 邀請您一起來真實感受.
+      </div>
+
+      <div class="highlight-section">
+        <div class="divider"></div> <div class="highlight-block">
+          <div class="highlight-title">真正巨星上場</div>
+          <div class="highlight-content">茱蒂蒙·瓊查容蘇因、陳昊森、曹佑寧、林美秀</div>
+        </div>
+        <div class="highlight-block">
+          <div class="highlight-title">真的不能錯過</div>
+          <div class="highlight-content">2026 最想要演唱會門票，請攜帶名片抽獎</div>
+        </div>
+      </div>
+    </div> </div>
 
   <div class="form-section" id="form-container">
-    <div class="form-title">RSVP</div>
-    <div class="form-disclaimer">
-      本報名網頁僅供受邀對象使用。填寫報名表不代表確認出席，主辦單位保留最終審核權，並將於活動前另行通知。
+    <div class="content-block">
+      <div class="form-title">RSVP</div>
+      <div class="form-disclaimer">
+        本報名網頁僅供受邀對象使用。填寫報名表不代表確認出席，主辦單位保留最終審核權，並將於活動前另行通知。
+      </div>
+      <form id="rsvp-form">
+        <div class="form-group">
+          <input type="text" id="company" placeholder="公司名稱" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="name" placeholder="姓名" required>
+        </div>
+        <div class="form-group">
+          <input type="text" id="title" placeholder="職稱" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="phone" placeholder="手機號碼" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" placeholder="電子郵件" required>
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn">確認報名</button>
+      </form>
     </div>
-    <form id="rsvp-form">
-      <div class="form-group">
-        <input type="text" id="company" placeholder="公司名稱" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="name" placeholder="姓名" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="title" placeholder="職稱" required>
-      </div>
-      <div class="form-group">
-        <input type="tel" id="phone" placeholder="手機號碼" required>
-      </div>
-      <div class="form-group">
-        <input type="email" id="email" placeholder="電子郵件" required>
-      </div>
-      <button type="submit" class="submit-btn" id="submit-btn">確認報名</button>
-    </form>
   </div>
 
   <div class="success-screen" id="success-screen">
-    <h2>完成報名！</h2>
-    <p>本次活動採邀請制，填寫報名表不代表確認出席資格。主辦單位將於活動前2天另行以電子郵件通知完成報名的貴賓，請留意信箱來信。</p>
-    
-    <img src="kv.jpg" alt="TVBS 2026 主視覺" class="success-img">
-    
-    <div class="recap-meta">
-      <p style="color: var(--gold); font-size: 20px; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px;">2026.04.15</p>
-      <p>松菸誠品表演廳 | 台北市信義區菸廠路88號B1</p>
-    </div>
+    <div class="content-block">
+      <h2>完成報名！</h2>
+      <p>本次活動採邀請制，填寫報名表不代表確認出席資格。主辦單位將於活動前2天另行以電子郵件通知完成報名的貴賓，請留意信箱來信。</p>
+      
+      <img src="kv.jpg" alt="TVBS 2026 主視覺" class="success-img">
+      
+      <div class="recap-meta">
+        <p style="color: var(--gold); font-size: 20px; font-weight: 700; margin-bottom: 8px; letter-spacing: 2px;">2026.04.15</p>
+        <p>松菸誠品表演廳 | 台北市信義區菸廠路88號B1</p>
+      </div>
 
-    <button class="submit-btn back-btn" id="back-home-btn">回到首頁</button>
+      <button class="submit-btn back-btn" id="back-home-btn">回到首頁</button>
+    </div>
   </div>
 
   <script>
