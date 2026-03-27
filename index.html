@@ -43,16 +43,25 @@
     padding: 40px 24px 60px;
   }
 
-  /* 1. 主視覺 */
+  /* 1. 主視覺 - 已加入漸層淡出效果以減少分割感 */
   .hero-section {
     width: 90%;
     margin: 0 auto 40px;
   }
+  
+  /* 核心修改區塊：在 video 標籤上套用 CSS Mask 遮罩 */
   .hero-section video, .hero-section img {
     width: 100%;
     height: auto;
     display: block;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    
+    /* 1. 設定遮罩漸層 (Requires -webkit- prefix for mobile compatibility like iOS Safari) */
+    /* 效果：從上方開始完全顯示(black 80%)，到最底部完全透明(transparent 100%) */
+    -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    
+    /* 2. 微調原本的陰影，讓淡出效果更純粹，避免硬邊界 */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4); 
   }
 
   /* 2 & 3. What is Real 主題區塊 */
@@ -316,7 +325,7 @@
     <div class="highlight-section">
       <div class="divider"></div> <div class="highlight-block">
         <div class="highlight-title">真正巨星上場</div>
-        <div class="highlight-content">茱蒂蒙·瓊查容蘇因、陳昊森、曹佑寧、林美秀</div>
+        <div class="highlight-content">茱蒂蒙·瓊查容蘇蘇因、陳昊森、曹佑寧、林美秀</div>
       </div>
       <div class="highlight-block">
         <div class="highlight-title">真的不能錯過</div>
